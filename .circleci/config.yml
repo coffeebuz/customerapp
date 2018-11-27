@@ -27,7 +27,7 @@ jobs:
       - run:  
           name: Upload apk
           command: |
-            ~/.local/bin/aws cp build/output coffeebuzapks/customerapp
+            ~/.local/bin/aws cp customerapp/app/build/outputs/apk/release/app-release-unsigned.apk s3://10kg/coffeebuzapks/customerapp
 workflows:
   version: 2
   deploy_nginx-proxy:
@@ -37,4 +37,4 @@ workflows:
           filters:
             branches:
               only:
-                - master        
+                - master
