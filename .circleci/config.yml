@@ -29,13 +29,7 @@ jobs:
       - run:  
           name: Upload apk
           command: |
-            pwd
-            ls
-            ls customerapp/app/build
-            ls customerapp/app/build/outputs
-            ls customerapp/app/build/outputs/apk
-            ls customerapp/app/build/outputs/apk/release
-            ~/.local/bin/aws s3 cp customerapp/app/build/outputs/apk/release/app-release-unsigned.apk s3://10kg/coffeebuzapks/customerapp
+            ~/.local/bin/aws s3 cp app/build/outputs/apk/release/app-release-unsigned.apk s3://10kg/coffeebuzapks/customerapp
 workflows:
   version: 2
   build_and_save_apk:
