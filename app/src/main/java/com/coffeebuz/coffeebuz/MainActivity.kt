@@ -7,6 +7,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.ImageView
 import com.github.sumimakito.awesomeqr.AwesomeQRCode
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,8 +17,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun onGenerateQRCodeClick( view: View){
-        val qrCodeText = findViewById<EditText>(R.id.qrText)
-        AwesomeQRCode.Renderer().contents(qrCodeText!!.text.toString())
+        AwesomeQRCode.Renderer().contents(qrText!!.text.toString())
             .size(800).margin(20)
             .renderAsync(object : AwesomeQRCode.Callback {
                 override fun onRendered(renderer: AwesomeQRCode.Renderer, bitmap: Bitmap) {

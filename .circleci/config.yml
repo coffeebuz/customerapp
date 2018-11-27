@@ -1,0 +1,40 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/android:api-28-alpha
+    environment:
+      JVM_OPTS: -Xmx3200m
+    steps:
+      - checkout
+      - restore_cache:
+          key: jars-{{ checksum "src/build.gradle" }}-{{ checksum  "src/app/build.gradle" }}
+      - run:
+          name: Download dependencies
+          command: ./gradlew androidDependencies
+      - save_cache:
+          paths:
+            - .gradle
+          key: jars-{{ checksum "src/build.gradle" }}-{{ checksum  "src/app/build.gradle" }}
+      - run:
+          name: Build debug APK and release APK
+          command: |
+            ./gradlew :app:assembleRelease
+      - run:
+          name: Install aws cli
+          command: |
+            pip install awscli --upgrade --user
+      - run:  
+          name: Upload apk
+          command: |
+            ~/.local/bin/aws cp build/output coffeebuzapks/customerapp
+workflows:
+  version: 2
+  deploy_nginx-proxy:
+    jobs:
+      - build:
+          context: prod
+          filters:
+            branches:
+              only:
+                - master        
