@@ -11,7 +11,9 @@ jobs:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
           name: Download dependencies
-          command: ./gradlew androidDependencies
+          command: |
+            chmod a+x ./gradlew
+            ./gradlew androidDependencies
       - save_cache:
           paths:
             - .gradle
@@ -19,8 +21,7 @@ jobs:
       - run:
           name: Build debug APK and release APK
           command: |
-            chmod a+x ./gradlew
-            ./gradlew :app:assembleRelease
+             ./gradlew :app:assembleRelease
       - run:
           name: Install aws cli
           command: |
