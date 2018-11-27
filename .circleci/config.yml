@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  build_apk:
     docker:
       - image: circleci/android:api-28-alpha
     environment:
@@ -30,7 +30,7 @@ jobs:
             ~/.local/bin/aws cp customerapp/app/build/outputs/apk/release/app-release-unsigned.apk s3://10kg/coffeebuzapks/customerapp
 workflows:
   version: 2
-  deploy_nginx-proxy:
+  build_apk:
     jobs:
       - build:
           context: prod
