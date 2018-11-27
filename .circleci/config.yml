@@ -5,6 +5,7 @@ jobs:
       - image: circleci/android:api-28-alpha
     environment:
       JVM_OPTS: -Xmx3200m
+      KEYSTORE: ${HOME}/${CIRCLE_PROJECT_REPONAME}/signing.keystore
     steps:
       - checkout
       - restore_cache:
@@ -19,17 +20,21 @@ jobs:
             - .gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
-          name: Build release APK
-          command: |
-             ./gradlew :app:assembleRelease
-      - run:
           name: Install aws cli
           command: |
             pip install awscli --upgrade --user
+      - run:
+          name: Download keystore
+          command: |
+            ~/.local/bin/aws s3 cp s3://coffeebuzapks/coffeebuz.keystore $KEYSTORE     
+      - run:
+          name: Build release APK
+          command: |
+             ./gradlew :app:assembleRelease
       - run:  
           name: Upload apk
           command: |
-            ~/.local/bin/aws s3 cp app/build/outputs/apk/release/app-release-unsigned.apk s3://coffeebuzapks/customerapp/${CIRCLE_SHA1}.apk
+            ~/.local/bin/aws s3 cp app/build/outputs/apk/release/app-release.apk s3://coffeebuzapks/customerapp/${CIRCLE_SHA1}.apk
 workflows:
   version: 2
   build_and_save_apk:
