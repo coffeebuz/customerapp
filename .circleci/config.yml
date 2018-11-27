@@ -29,6 +29,8 @@ jobs:
       - run:  
           name: Upload apk
           command: |
+            pwd
+            ls
             ls customerapp/app/build
             ls customerapp/app/build/outputs
             ls customerapp/app/build/outputs/apk
