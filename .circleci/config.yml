@@ -11,6 +11,10 @@ jobs:
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
+          name: Setup Environment Variables
+          command: |
+            echo 'export KEYSTORE="${HOME}/${CIRCLE_PROJECT_REPONAME}/signing.keystore"' >> $BASH_ENV
+      - run:
           name: Download dependencies
           command: |
             chmod a+x ./gradlew
