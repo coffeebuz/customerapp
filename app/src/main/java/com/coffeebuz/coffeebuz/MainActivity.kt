@@ -23,8 +23,7 @@ class MainActivity : AppCompatActivity() {
                 override fun onRendered(renderer: AwesomeQRCode.Renderer, bitmap: Bitmap) {
                     // Tip: here we use runOnUiThread {...} to avoid the problems caused by operating UI elements from a non-UI thread.
                     runOnUiThread {
-                        val qrCodeImageViewer = findViewById<ImageView>(R.id.qrCode)
-                        qrCodeImageViewer!!.setImageBitmap(bitmap)
+                        qrCode!!.setImageBitmap(bitmap)
                     }
                 }
 

@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">coffeebuz</string>
     <string name="generate_qr_code">Generate QR code</string>
+    <string name="title_activity_dash">DashActivity</string>
 </resources>
