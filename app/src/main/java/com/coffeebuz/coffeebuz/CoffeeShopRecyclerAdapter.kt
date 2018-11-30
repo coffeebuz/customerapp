@@ -1,6 +1,7 @@
 package com.coffeebuz.coffeebuz
 
 import android.content.Context
+import android.content.Intent
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -25,11 +26,21 @@ class CoffeeShopRecyclerAdapter ( private val context: Context, private val coff
         holder.coffeeShopName?.text =coffeeshop.name
         holder.coffeeShopAddress?.text = coffeeshop.address.toString()
         holder.cupsToFreeCoffee?.text = coffeeshop.cupsToFreeCoffee
+        holder.itemPosition = position
     }
 
-    class ViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView) {
         val coffeeShopName = itemView.findViewById<TextView?>(R.id.coffeeShopName)
         val coffeeShopAddress = itemView.findViewById<TextView?>(R.id.coffeeShopAddress)
         val cupsToFreeCoffee = itemView.findViewById<TextView?>(R.id.cupsToFreeCoffee)
+        var itemPosition = 0
+
+        init {
+            itemView.setOnClickListener {
+                val intent = Intent(context, OrderActivity::class.java)
+                intent.putExtra(DASH_ITEM_POSITION, itemPosition)
+                context.startActivity(intent)
+            }
+        }
     }
 }
