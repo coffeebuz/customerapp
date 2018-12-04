@@ -17,12 +17,8 @@ class DashActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         dashItems.layoutManager = LinearLayoutManager(this)
-
         dashItems.adapter = CoffeeShopRecyclerAdapter(this,DataManager.coffeeshops)
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
+
     }
 
 }
