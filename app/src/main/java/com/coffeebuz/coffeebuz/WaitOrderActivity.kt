@@ -4,8 +4,8 @@ import java.util.concurrent.TimeUnit
 import java.util.Locale
 import android.os.Bundle
 import android.os.CountDownTimer
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.snackbar.Snackbar
+import androidx.appcompat.app.AppCompatActivity
 
 import kotlinx.android.synthetic.main.activity_wait_order.*
 import kotlinx.android.synthetic.main.content_wait_order.*
@@ -36,8 +36,6 @@ class WaitOrderActivity : AppCompatActivity() {
     }
 
     private fun timeString(millisUntilFinished:Long):String{
-        var millisUntilFinished:Long = millisUntilFinished
-
         val seconds = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished)
 
         // Format the string

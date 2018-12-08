@@ -15,14 +15,14 @@ data class Address ( val street1: String, val street2: String? = null, val city:
 data class CoffeeShop ( val name: String, val address: Address, val cupsToFreeCoffee: String )
 
 fun Parcel.readByteArrayToBigInteger() : BigInteger {
-    var byteArray = createByteArray()
+    val byteArray = createByteArray()
     readByteArray(byteArray)
-    return BigInteger(byteArray);
+    return BigInteger(byteArray)
 }
 
 @Parcelize
 data class Order (
-    val itemName: String,
+    val itemName: String?,
     val price: BigDecimal ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),

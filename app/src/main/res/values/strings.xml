@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">coffeebuz</string>
-    <string name="title_activity_dash">Coffee Shops</string>
-    <string name="title_activity_order">OrderActivity</string>
-    <string name="title_activity_wait_order">WaitOrderActivity</string>
+	<string name="app_name">coffeebuz</string>
+	<string name="empty">[empty]</string>
+	<string name="title_activity_dash">Coffee Shops</string>
+	<string name="title_activity_order">OrderActivity</string>
+	<string name="title_activity_wait_order">WaitOrderActivity</string>
 </resources>

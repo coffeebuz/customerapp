@@ -1,11 +1,7 @@
 package com.coffeebuz.coffeebuz
 
 import android.os.Bundle
-import android.support.design.widget.Snackbar
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager
-import android.widget.ArrayAdapter
-
+import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_dash.*
 import kotlinx.android.synthetic.main.content_dash.*
 
@@ -16,7 +12,7 @@ class DashActivity : AppCompatActivity() {
         setContentView(R.layout.activity_dash)
         setSupportActionBar(toolbar)
 
-        dashItems.layoutManager = LinearLayoutManager(this)
+        dashItems.layoutManager = androidx.recyclerview.widget.LinearLayoutManager(this)
         dashItems.adapter = CoffeeShopRecyclerAdapter(this,DataManager.coffeeshops)
 
     }
