@@ -1,6 +1,5 @@
-package com.coffeebuz.coffeebuz
+package com.coffeebuz.coffeebuz.ui.order
 
-import androidx.databinding.Bindable
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
