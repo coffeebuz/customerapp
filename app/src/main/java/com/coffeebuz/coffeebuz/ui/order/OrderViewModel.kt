@@ -1,16 +1,8 @@
 package com.coffeebuz.coffeebuz.ui.order
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.coffeebuz.coffeebuz.CoffeeShop
 
-class OrderViewModel : ViewModel() {
-    private val _data = MutableLiveData<String>()
+class OrderViewModel(val coffeeShop:CoffeeShop) : ViewModel() {
 
-    val data: LiveData<String>
-        get() = _data
-
-    init {
-        _data.value = "Hello, Jetpack!"
-    }
 }
